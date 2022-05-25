@@ -1,9 +1,11 @@
 import React from 'react';
-import {StatusBar, SafeAreaView, View} from 'react-native';
+import {StatusBar, SafeAreaView} from 'react-native';
 import { useFonts, Montserrat_400Regular, Montserrat_700Bold } from '@expo-google-fonts/montserrat';
+import AppLoading from 'expo-app-loading';
 
 
-import Cesta from './src/view/Cesta';
+import Cesta from './src/view/Cesta/index';
+import mocks from './src/mocks/cesta'
 
 
 export default function App() {
@@ -14,14 +16,14 @@ export default function App() {
   });
 
   if (!fonteCarregada){
-    return <View/>
+    return <AppLoading/>
   }
     
 
   return (
-    <SafeAreaView >
+    <SafeAreaView style={{flex: 1}}>
       <StatusBar/>
-      <Cesta/>
+      <Cesta {...mocks}/>
     </SafeAreaView>
   );
 }
